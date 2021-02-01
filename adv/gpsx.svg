@@ -13,7 +13,10 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="gpsx.svg">
+   sodipodi:docname="gpsx.svg"
+   inkscape:export-filename="C:\projs\gpsx\adv\gpsx.png"
+   inkscape:export-xdpi="2048.9155"
+   inkscape:export-ydpi="2048.9155">
   <title
      id="title879">Godot PSX</title>
   <defs
@@ -27,7 +30,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="15.839192"
      inkscape:cx="28.405519"
-     inkscape:cy="18.023706"
+     inkscape:cy="13.050831"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
