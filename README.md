@@ -12,7 +12,7 @@ Only the most necessary things like vertex precision loss, dithering, 15-bit col
 Include one of the shaders within your project. Create `.tres` materials as needed to speed-up things.
 
 Included for transparency purposes are add/subtract blend shaders. Unfortunately there isn't a [convenient](https://docs.godotengine.org/en/stable/tutorials/shading/screen-reading_shaders.html) 
-way to read & write to framebuffers so for now I did not implement these. GPUs just aren't made like they were
+way to read & write to framebuffers so for now I did not implement better accurate ones. GPUs just aren't made like they were
 used to...
 
 ### Copyright
