@@ -1,0 +1,83 @@
+[gd_scene load_steps=15 format=3 uid="uid://o1mtvbobyn3k"]
+
+[ext_resource type="Shader" path="res://materials/shaders/misc/gpsx_sky.gdshader" id="1_2padv"]
+[ext_resource type="Texture2D" uid="uid://1p6jnrj0s6dg" path="res://panorama_image.webp" id="2_5ncic"]
+[ext_resource type="Texture2D" uid="uid://celj2eriv26q7" path="res://icon.svg" id="2_i12nt"]
+[ext_resource type="Shader" path="res://materials/shaders/3d/gpsx_3d.gdshader" id="3_52s1c"]
+[ext_resource type="Shader" path="res://materials/shaders/2d/gpsx_2d.gdshader" id="3_fuctq"]
+[ext_resource type="Shader" path="res://materials/shaders/2d/gpsx_2d_qadd.gdshader" id="4_cscpb"]
+[ext_resource type="Script" path="res://spin.gd" id="5_pmidu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7kt3v"]
+shader = ExtResource("1_2padv")
+shader_parameter/banding = true
+shader_parameter/dithering = true
+shader_parameter/mixer = Color(1, 1, 1, 1)
+shader_parameter/tex = ExtResource("2_5ncic")
+
+[sub_resource type="Sky" id="Sky_o6is6"]
+sky_material = SubResource("ShaderMaterial_7kt3v")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_o1rqt"]
+background_mode = 2
+sky = SubResource("Sky_o6is6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np81v"]
+render_priority = 0
+shader = ExtResource("3_52s1c")
+shader_parameter/banding = true
+shader_parameter/dithering = true
+shader_parameter/psx_fixed_point_precision = 48.16
+shader_parameter/dist_fade_max = 4.0
+shader_parameter/dist_fade_min = 2.0
+shader_parameter/fog = true
+shader_parameter/fog_color = Color(1, 1, 1, 1)
+shader_parameter/alpha_cutoff = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_0wxeo"]
+material = SubResource("ShaderMaterial_np81v")
+subdivide_width = 2
+subdivide_height = 2
+subdivide_depth = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0sykp"]
+shader = ExtResource("3_fuctq")
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/banding = true
+shader_parameter/dithering = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u64n2"]
+shader = ExtResource("4_cscpb")
+shader_parameter/alpha_cutoff = 0.1
+shader_parameter/banding = true
+shader_parameter/dithering = true
+
+[node name="Node3d" type="Node3D"]
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.411514, -0.339942, 0.845633, -2.98023e-08, 0.927836, 0.372988, -0.911403, 0.15349, -0.381818, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o1rqt")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+shader_uniforms/mixer = Color(1, 1, 1, 1)
+mesh = SubResource("BoxMesh_0wxeo")
+script = ExtResource("5_pmidu")
+
+[node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0sykp")
+position = Vector2(21, 23)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_i12nt")
+
+[node name="Icon2" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_u64n2")
+position = Vector2(37, 39)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_i12nt")
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(0.849893, 0, -0.526956, 0, 1, 0, 0.526956, 0, 0.849893, -0.928, 0, 1.361)
