@@ -2,6 +2,8 @@
   <img src=adv/gpsx.png>
   <br>
   <b> Higher accuracy PSX-like shaders for Godot Engine</b>
+  <br>
+  <img src=adv/screenshot.png>
 </p>
 
 `GPSX` consists in a few shaders that allow you to achieve imagery akin to that of Sony's PS1.
