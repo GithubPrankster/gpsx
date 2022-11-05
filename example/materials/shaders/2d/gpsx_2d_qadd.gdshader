@@ -29,8 +29,11 @@ const float finaldepth = 32.0;
 // it lol
 vec3 band_color(vec3 lol)
 {
-	highp vec3 result = floor(lol * (finaldepth - 1.0) + 0.5) / (finaldepth - 1.0);
-    return clamp(result, 0.0, 1.0);
+	ivec3 res = ivec3(clamp(lol, 0.0, 1.0) * neareight) & ivec3(0xFF);
+	ivec3 ires = res >> 3;
+	ivec3 dres = res & ivec3(7);
+	res = (ires << 3) | dres;
+	return vec3(res) / neareight;
 }
 
 void fragment(){
